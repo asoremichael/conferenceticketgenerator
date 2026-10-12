@@ -1,0 +1,597 @@
+
+/* =========================================
+   1. RESET DEFAULT BROWSER STYLES
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   2. PAGE BACKGROUND AND GENERAL STYLING
+========================================= */
+
+body {
+  min-height: 100vh;
+  padding: 32px 20px;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+
+  background-color: #100b24;
+  background-image:
+    radial-gradient(
+      ellipse at 85% 75%,
+      rgba(100, 0, 180, 0.35),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 10% 90%,
+      rgba(80, 45, 130, 0.2),
+      transparent 40%
+    );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* =========================================
+   3. MAIN CONTAINER
+========================================= */
+
+.container {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+}
+
+
+/* =========================================
+   4. PAGE HEADER AND LOGO
+========================================= */
+
+.page-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 32px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #c9c1d9;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   5. FORM LAYOUT
+========================================= */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group > label {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+/* =========================================
+   6. TEXT INPUT FIELDS
+========================================= */
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  min-height: 48px;
+  padding: 14px 16px;
+
+  border: 1px solid #817792;
+  border-radius: 10px;
+
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 16px;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+input::placeholder {
+  color: #aaa1ba;
+  opacity: 1;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: #f68b77;
+  outline: none;
+}
+
+
+/* =========================================
+   7. AVATAR UPLOAD AREA
+========================================= */
+
+.upload-box {
+  min-height: 135px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  border: 2px dashed #817792;
+  border-radius: 10px;
+
+  background-color: rgba(255, 255, 255, 0.05);
+
+  cursor: pointer;
+  text-align: center;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.upload-box:hover {
+  border-color: #f68b77;
+  background-color: rgba(255, 255, 255, 0.09);
+}
+
+.upload-box:focus-visible {
+  outline: 3px solid #f68b77;
+  outline-offset: 4px;
+}
+
+.upload-box.dragging {
+  border-color: #f68b77;
+  background-color: rgba(246, 139, 119, 0.15);
+}
+
+#upload-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #817792;
+  border-radius: 10px;
+
+  background-color: rgba(255, 255, 255, 0.08);
+  font-size: 25px;
+}
+
+#upload-text {
+  font-size: 14px;
+  color: #ded7e8;
+}
+
+#avatar-preview {
+  width: 60px;
+  height: 60px;
+
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #f68b77;
+}
+
+#avatar-preview[hidden] {
+  display: none;
+}
+
+.hint {
+  color: #c9c1d9;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   8. VALIDATION ERROR MESSAGES
+========================================= */
+
+.error {
+  color: #ff9b91;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.error:empty {
+  display: none;
+}
+
+input[aria-invalid="true"] {
+  border-color: #ff9b91;
+}
+
+.upload-box:has(+ input[aria-invalid="true"]) {
+  border-color: #ff9b91;
+}
+
+
+/* =========================================
+   9. SUBMIT BUTTON
+========================================= */
+
+.generate-button {
+  width: 100%;
+  min-height: 52px;
+  padding: 15px 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: #f57461;
+  color: #190e2b;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.generate-button:hover {
+  background-color: #ff9d8c;
+}
+
+.generate-button:active {
+  transform: translateY(1px);
+}
+
+.generate-button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+}
+
+
+/* =========================================
+   10. GENERATED TICKET SECTION
+========================================= */
+
+.ticket-section {
+  width: 100%;
+}
+
+.ticket-section[hidden] {
+  display: none;
+}
+
+.ticket-section:not([hidden]) {
+  display: block;
+}
+
+
+/* =========================================
+   11. TICKET CARD
+========================================= */
+
+.ticket {
+  position: relative;
+
+  display: flex;
+  align-items: stretch;
+
+  width: 100%;
+  min-height: 220px;
+  margin: 40px auto;
+
+  border: 1px solid #9182a9;
+  border-radius: 12px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 100% 100%,
+      rgba(101, 0, 180, 0.45),
+      transparent 65%
+    ),
+    linear-gradient(
+      120deg,
+      #201731,
+      #4c376a
+    );
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================
+   12. TICKET DETAILS
+========================================= */
+
+.ticket-details {
+  flex: 1;
+  min-width: 0;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-logo {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+}
+
+.event-details {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #d0c8df;
+}
+
+
+/* =========================================
+   13. ATTENDEE INFORMATION
+========================================= */
+
+.attendee {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+.ticket-avatar {
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.attendee h2 {
+  font-size: 17px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.attendee p {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #d0c8df;
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   14. VERTICAL TICKET NUMBER
+========================================= */
+
+.ticket-number {
+  width: 65px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-left: 1px dashed #b8a7d1;
+
+  color: #d0c8df;
+  font-size: 14px;
+
+  writing-mode: vertical-rl;
+}
+
+
+/* =========================================
+   15. FOOTER
+========================================= */
+
+.attribution {
+  width: 100%;
+  margin-top: 32px;
+
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.8;
+
+  color: #c9c1d9;
+}
+
+.attribution a {
+  color: #f68b77;
+}
+
+.attribution a:hover {
+  color: #ffb6a8;
+}
+
+
+/* =========================================
+   16. KEYBOARD FOCUS STATES
+========================================= */
+
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid #f68b77;
+  outline-offset: 3px;
+}
+
+
+/* =========================================
+   17. RESPONSIVE DESIGN FOR TABLETS
+========================================= */
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 560px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .ticket-details {
+    padding: 20px;
+  }
+}
+
+
+/* =========================================
+   18. RESPONSIVE DESIGN FOR MOBILE PHONES
+========================================= */
+
+@media (max-width: 600px) {
+  body {
+    padding: 24px 16px;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .page-header {
+    margin-bottom: 28px;
+  }
+
+  .logo {
+    font-size: 18px;
+    margin-bottom: 26px;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  form {
+    gap: 20px;
+  }
+
+  .upload-box {
+    min-height: 125px;
+  }
+
+  .generate-button {
+    min-height: 50px;
+    font-size: 15px;
+  }
+
+  .ticket {
+    min-height: 190px;
+    margin: 32px auto;
+  }
+
+  .ticket-details {
+    padding: 16px;
+  }
+
+  .ticket-logo {
+    font-size: 17px;
+  }
+
+  .event-details {
+    font-size: 10px;
+  }
+
+  .attendee {
+    gap: 8px;
+    padding-top: 22px;
+  }
+
+  .ticket-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .attendee h2 {
+    font-size: 13px;
+  }
+
+  .attendee p {
+    font-size: 10px;
+  }
+
+  .ticket-number {
+    width: 38px;
+    font-size: 12px;
+  }
+
+  .attribution {
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================
+   19. EXTRA SMALL MOBILE PHONES
+========================================= */
+
+@media (max-width: 360px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .ticket-details {
+    padding: 12px;
+  }
+
+  .ticket-number {
+    width: 32px;
+  }
+
+  .ticket-logo {
+    font-size: 15px;
+  }
+}

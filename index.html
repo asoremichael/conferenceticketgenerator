@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="./assets/images/favicon-32x32.png">
+    <link rel="stylesheet" href="./style.css">
+
+  <title>Frontend Mentor | Conference Ticket Generator</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="container">
+
+    <!-- Form section -->
+    <section id="form-section" class="form-section">
+      <header class="page-header">
+        <p class="logo"><img src="./assets/images/logo-full.svg" alt="Coding Conf Logo"></p>
+        <h1>Your Journey to Coding Conf 2025 Starts Here!</h1>
+        <p class="subtitle">
+          Secure your spot at next year's biggest coding conference.
+        </p>
+      </header>
+
+      <form id="ticket-form" novalidate>
+
+        <!-- Avatar upload -->
+        <div class="form-group">
+          <label for="avatar">Upload Avatar</label>
+
+          <label for="avatar" class="upload-box">
+            <span id="upload-icon" aria-hidden="true">☁</span>
+            <img id="avatar-preview" alt="Avatar preview" hidden>
+            <span id="upload-text">
+              Drag and drop or click to upload
+            </span>
+          </label>
+
+          <input
+            type="file"
+            id="avatar"
+            name="avatar"
+            accept="image/png, image/jpeg"
+            hidden
+            aria-describedby="avatar-hint avatar-error"
+          >
+
+          <p id="avatar-hint" class="hint">
+            Upload your photo (JPG or PNG, max size: 500KB).
+          </p>
+          <p id="avatar-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Full name -->
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input
+            type="text"
+            id="full-name"
+            name="fullName"
+            autocomplete="name"
+            aria-describedby="name-error"
+            required
+          >
+          <p id="name-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@email.com"
+            autocomplete="email"
+            aria-describedby="email-error"
+            required
+          >
+          <p id="email-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- GitHub username -->
+        <div class="form-group">
+          <label for="github">GitHub Username</label>
+          <input
+            type="text"
+            id="github"
+            name="github"
+            placeholder="@yourusername"
+            autocomplete="off"
+            aria-describedby="github-error"
+            required
+          >
+          <p id="github-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <button type="submit" class="generate-button">
+          Generate My Ticket
+        </button>
+
+        <p id="form-message" class="error" role="alert"></p>
+      </form>
+    </section>
+
+    <!-- Generated ticket section -->
+    <section id="ticket-section" class="ticket-section" hidden>
+      <header class="page-header">
+        <p class="logo">✳ Coding Conf</p>
+        <h1>
+          Congrats, <span id="ticket-heading-name"></span>!
+          Your ticket is ready.
+        </h1>
+        <p class="subtitle">
+          We've emailed your ticket to
+          <span id="ticket-email"></span> and will send updates
+          in the run up to the event.
+        </p>
+      </header>
+
+      <article class="ticket">
+        <div class="ticket-details">
+          <p class="ticket-logo">✳ Coding Conf</p>
+          <p class="event-details">Jan 31, 2025 / Austin, TX</p>
+
+          <div class="attendee">
+            <img id="ticket-avatar" alt="" class="ticket-avatar">
+
+            <div>
+              <h2 id="ticket-name"></h2>
+              <p id="ticket-github"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-number" aria-label="Ticket number">
+          #60909
+        </div>
+      </article>
+
+      <button type="button" id="back-button" class="generate-button">
+        Create Another Ticket
+      </button>
+    </section>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+  <footer class="attribution">
+    Challenge by
+    <a href="https://www.frontendmentor.io?ref=challenge"
+       target="_blank" rel="noreferrer">Frontend Mentor</a>.
+    Coded by <a href="#">Michael Asore</a>.
+  </footer>
+</body>
+</html>
+```
